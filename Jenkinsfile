@@ -1,17 +1,17 @@
 pipeline {
-    agent any
+    agent Ubuntu-16-Docker
 
     stages {
         stage('Install maven') {
             steps {
                 echo $(pwd)
-                curl -sSL https://www-us.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz | tar xzv
+                "curl -sSL https://www-us.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz | tar xzv"
             }
         }
         stage('Build') {
             steps {
                 echo 'Building..'
-                /home/ec2-user/apache-maven-3.6.1/bin/mvn compile
+                "/home/ec2-user/apache-maven-3.6.1/bin/mvn compile"
             }
         }
         stage('Test') {
